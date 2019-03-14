@@ -471,6 +471,7 @@
     <Content Include="img\project-3.jpg" />
     <Content Include="img\project-4.jpg" />
     <Content Include="img\template-mac.png" />
+    <Content Include="RedisConfig.xml" />
     <Content Include="Scripts\school\front.js" />
     <Content Include="Scripts\school\charts-custom.js" />
     <Content Include="Scripts\school\charts-home.js" />
@@ -600,6 +601,7 @@
     <Content Include="fonts\dashboard.eot" />
     <Content Include="fonts\dashboard.ttf" />
     <Content Include="fonts\dashboard.woff" />
+    <Content Include="Log4Net.config" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\home\breakpoints.min.js" />
     <Content Include="Scripts\home\browser.min.js" />

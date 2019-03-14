@@ -5,6 +5,16 @@ VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "exiao.com", "exiao.com\exiao.com.csproj", "{533A496F-954D-4A5A-B094-A93E13B735A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "exiao.common", "exiao.common\exiao.common.csproj", "{7A2960ED-5FF8-4715-8043-F5107BF14EE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "exiao.model", "exiao.model\exiao.model.csproj", "{D6CC17D4-85C1-4C61-B288-5FDAF797C248}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "exiao.bll", "exiao.bll\exiao.bll.csproj", "{8576AF6A-46C8-412C-A61A-2F94D9BE748B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "exiao.dll", "exiao.dll\exiao.dll.csproj", "{E4AE7CAB-DDA7-4557-AD67-AEC1E5230ABF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "exiao.sdk", "exiao.sdk\exiao.sdk.csproj", "{EAC433E3-671B-499C-9F26-FF9C7A0CF2FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +25,26 @@ Global
 		{533A496F-954D-4A5A-B094-A93E13B735A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{533A496F-954D-4A5A-B094-A93E13B735A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{533A496F-954D-4A5A-B094-A93E13B735A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A2960ED-5FF8-4715-8043-F5107BF14EE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A2960ED-5FF8-4715-8043-F5107BF14EE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A2960ED-5FF8-4715-8043-F5107BF14EE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A2960ED-5FF8-4715-8043-F5107BF14EE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6CC17D4-85C1-4C61-B288-5FDAF797C248}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6CC17D4-85C1-4C61-B288-5FDAF797C248}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6CC17D4-85C1-4C61-B288-5FDAF797C248}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6CC17D4-85C1-4C61-B288-5FDAF797C248}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8576AF6A-46C8-412C-A61A-2F94D9BE748B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8576AF6A-46C8-412C-A61A-2F94D9BE748B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8576AF6A-46C8-412C-A61A-2F94D9BE748B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8576AF6A-46C8-412C-A61A-2F94D9BE748B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4AE7CAB-DDA7-4557-AD67-AEC1E5230ABF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4AE7CAB-DDA7-4557-AD67-AEC1E5230ABF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4AE7CAB-DDA7-4557-AD67-AEC1E5230ABF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4AE7CAB-DDA7-4557-AD67-AEC1E5230ABF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAC433E3-671B-499C-9F26-FF9C7A0CF2FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAC433E3-671B-499C-9F26-FF9C7A0CF2FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAC433E3-671B-499C-9F26-FF9C7A0CF2FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAC433E3-671B-499C-9F26-FF9C7A0CF2FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
