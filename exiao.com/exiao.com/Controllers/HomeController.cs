@@ -18,6 +18,16 @@ namespace exiao.com.Controllers
 
             return View();
         }
-        
+
+        public ActionResult Regedit()
+        {
+
+            return View();
+        }
+
+        public JsonResult RegeditUser(string userName, string passWord)
+        {
+
+        }
     }
 }

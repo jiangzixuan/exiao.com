@@ -632,6 +632,7 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\School\Index.cshtml" />
     <Content Include="Views\School\AgentManage.cshtml" />
+    <Content Include="Views\Home\Regedit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

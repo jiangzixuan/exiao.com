@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>易校-登录</title>
+    <title>易校-注册</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
@@ -53,10 +53,15 @@
                                         <input id="login-password" type="password" name="loginPassword" required data-msg="Please enter your password" class="input-material">
                                         <label for="login-password" class="label-material">密码</label>
                                     </div>
-                                    <a id="login" href="#" class="btn btn-primary">登录</a>
+                                    <div class="form-group">
+                                        <input id="login-password" type="password" name="loginPassword" required data-msg="Please enter your password" class="input-material">
+                                        <label for="login-password" class="label-material">重复密码</label>
+                                    </div>
+                                    
+                                    <a id="login" href="/school" class="btn btn-primary">注册</a>
                                     <!-- This should be submit button but I replaced it with <a> for demo purposes-->
                                 </form>
-                                <a href="#" class="forgot-pass">忘记密码?</a><br><small>没有密码? </small><a href="regedit" class="signup">注册一个</a>
+                                <small>已有密码? </small><a href="regedit" class="login">登录</a>
                             </div>
                         </div>
                     </div>
@@ -68,6 +73,7 @@
 
 </body>
 </html>
+
 <script src="/Scripts/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
     $("#login").on(click, function () {
@@ -75,7 +81,7 @@
         var psd = $("#login-password").val();
         $.post("RegeditUser",
             { userName: uname, passWord: psd },
-            function () {
+            function (data) {
 
 
         })
