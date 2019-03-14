@@ -13,9 +13,9 @@ namespace exiao.sdk
 {
     public class Util
     {
-        public static string GetConnectString(string Name)
+        public static string GetEXiaoConnectString()
         {
-            return System.Configuration.ConfigurationManager.ConnectionStrings[Name].ToString();
+            return System.Configuration.ConfigurationManager.ConnectionStrings["EXiao"].ToString();
         }
 
         public static string GetAppSetting(string key)

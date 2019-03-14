@@ -1,4 +1,5 @@
-﻿using System;
+﻿using exiao.model.entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace exiao.bll
 {
-    public class Class1
+    public class B_Agent
     {
+        
     }
 }

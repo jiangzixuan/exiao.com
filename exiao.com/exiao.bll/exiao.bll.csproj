@@ -42,10 +42,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="B_CheckCodeRedis.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="B_Agent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\exiao.dll\exiao.dll.csproj">
+      <Project>{e4ae7cab-dda7-4557-ad67-aec1e5230abf}</Project>
+      <Name>exiao.dll</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\exiao.model\exiao.model.csproj">
+      <Project>{D6CC17D4-85C1-4C61-B288-5FDAF797C248}</Project>
+      <Name>exiao.model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\exiao.sdk\exiao.sdk.csproj">
       <Project>{eac433e3-671b-499c-9f26-ff9c7a0cf2fa}</Project>
       <Name>exiao.sdk</Name>

@@ -11,7 +11,7 @@ using MySql.Data.MySqlClient;
 using System.Data;
 using System.Collections;
 
-namespace easyzy.sdk
+namespace exiao.sdk
 {
     /// <summary>
     /// 补充mysql.data的mysql数据库访问帮助类
