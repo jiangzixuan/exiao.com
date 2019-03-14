@@ -13,5 +13,10 @@ namespace exiao.com.Controllers
         {
             return View();
         }
+
+        public ActionResult AgentManage()
+        {
+            return View();
+        }
     }
 }
