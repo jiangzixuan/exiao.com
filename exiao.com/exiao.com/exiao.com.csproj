@@ -658,6 +658,10 @@
       <Project>{8576af6a-46c8-412c-a61a-2f94d9be748b}</Project>
       <Name>exiao.bll</Name>
     </ProjectReference>
+    <ProjectReference Include="..\exiao.model\exiao.model.csproj">
+      <Project>{D6CC17D4-85C1-4C61-B288-5FDAF797C248}</Project>
+      <Name>exiao.model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -54,14 +54,14 @@
                                         <label for="login-password" class="label-material">密码</label>
                                     </div>
                                     <div class="form-group">
-                                        <input id="login-password" type="password" name="loginPassword" required data-msg="Please enter your password" class="input-material">
-                                        <label for="login-password" class="label-material">重复密码</label>
+                                        <input id="login-password2" type="password" name="loginPassword2" required data-msg="Please enter your password" class="input-material">
+                                        <label for="login-password2" class="label-material">重复密码</label>
                                     </div>
                                     
                                     <a id="login" href="/school" class="btn btn-primary">注册</a>
                                     <!-- This should be submit button but I replaced it with <a> for demo purposes-->
                                 </form>
-                                <small>已有密码? </small><a href="regedit" class="login">登录</a>
+                                <small>已有密码? </small><a href="regedit" class="login">去登录</a>
                             </div>
                         </div>
                     </div>
@@ -76,14 +76,16 @@
 
 <script src="/Scripts/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-    $("#login").on(click, function () {
+    $("#login").on("click", function () {
         var uname = $("#login-username").val();
         var psd = $("#login-password").val();
         $.post("RegeditUser",
-            { userName: uname, passWord: psd },
+            { userName: uname, password: psd },
             function (data) {
-
-
+                if (data.code != "0")
+                {
+                    alert("error");
+                }
         })
     })
 </script>

@@ -44,6 +44,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="dto\Dto_AjaxReturnData.cs" />
     <Compile Include="entity\T_Agent.cs" />
+    <Compile Include="entity\T_User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -6,12 +6,18 @@ using System.Threading.Tasks;
 
 namespace exiao.model.dto
 {
-    public class Dto_AjaxReturnData
+    public class Dto_AjaxReturnData<T>
     {
-        public int ReturnCode { get; set; }
+        public AjaxResultCodeEnum code { get; set; }
 
-        public string ReturnMessage { get; set; }
+        public string message { get; set; }
 
-        
+        public T data { get; set; }
+    }
+
+    public enum AjaxResultCodeEnum
+    {
+        Success,
+        Error
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using exiao.bll;
+using exiao.model.dto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -25,9 +27,13 @@ namespace exiao.com.Controllers
             return View();
         }
 
-        public JsonResult RegeditUser(string userName, string passWord)
+        public JsonResult RegeditUser(string userName, string password)
         {
-
+            int id = B_User.Regedit(userName, password, "", "");
+            Dto_AjaxReturnData<int> r = new Dto_AjaxReturnData<int>();
+            r.code = AjaxResultCodeEnum.Success;
+            r.data = id;
+            return Json(r);
         }
     }
 }
