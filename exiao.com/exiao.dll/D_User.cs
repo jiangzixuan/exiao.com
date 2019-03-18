@@ -11,6 +11,21 @@ namespace exiao.dll
 {
     public class D_User
     {
+        public static T_User GetUser(string userName)
+        {
+            T_User model = null;
+            using (MySqlDataReader dr = MySqlHelper.ExecuteReader(Util.GetEXiaoConnectString(),
+                "select Id, UserName, TrueName, Psd, Mobile, CreateDate from T_User where UserName = @UserName",
+                "@UserName".ToVarCharInPara(userName)))
+            {
+                if (dr != null && dr.HasRows)
+                {
+                    model = MySqlDBHelper.ConvertDataReaderToEntitySingle<T_User>(dr);
+                }
+            }
+            return model;
+        }
+
         public static int Regedit(T_User u)
         {
             object o = MySqlHelper.ExecuteScalar(Util.GetEXiaoConnectString(),

@@ -17,5 +17,18 @@ namespace exiao.bll
             int id = D_User.Regedit(u);
             return id;
         }
+
+        public static bool IsUserNameExists(string userName)
+        {
+            T_User u = D_User.GetUser(userName);
+            if (u == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

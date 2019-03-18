@@ -46,19 +46,25 @@
                             <div class="content">
                                 <form method="post" class="form-validate">
                                     <div class="form-group">
-                                        <input id="login-username" type="text" name="loginUsername" required data-msg="Please enter your username" class="input-material">
-                                        <label for="login-username" class="label-material">用户名</label>
+                                        <input id="login-username" type="text" name="loginUsername" required class="input-material">
+                                        <label id="tip_username" for="login-username" class="label-material">用户名(5-16位字母/数字/下划线)</label>
                                     </div>
                                     <div class="form-group">
-                                        <input id="login-password" type="password" name="loginPassword" required data-msg="Please enter your password" class="input-material">
-                                        <label for="login-password" class="label-material">密码</label>
+                                        <input id="login-password" type="password" name="loginPassword" required class="input-material">
+                                        <label id="tip_password" for="login-password" class="label-material">密码(6-18位字母/数字/下划线)</label>
                                     </div>
                                     <div class="form-group">
-                                        <input id="login-password2" type="password" name="loginPassword2" required data-msg="Please enter your password" class="input-material">
-                                        <label for="login-password2" class="label-material">重复密码</label>
+                                        <input id="login-password2" type="password" name="loginPassword2" required class="input-material">
+                                        <label id="tip_password2" for="login-password2" class="label-material">重复密码</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input id="logi-checkcode" type="text" name="loginCheckcode" required class="input-material col-sm-3">
+                                        <label id="tip_checkcode" for="login-checkcode" class="label-material">验证码</label>
+                                        <img class="checkcode" src="ShowCheckCode?token=@ViewBag.Token" style="cursor:pointer;" onclick="refresh();" title="点击刷新验证码" alt="点击刷新验证码" />
                                     </div>
                                     
-                                    <a id="login" href="/school" class="btn btn-primary">注册</a>
+                                    <a id="regedit" href="#" class="btn btn-primary">注册</a>
+                                    <label id="tip_1" class="invalid-feedback" style="display:none;">密码与重复密码不一致</label>
                                     <!-- This should be submit button but I replaced it with <a> for demo purposes-->
                                 </form>
                                 <small>已有密码? </small><a href="regedit" class="login">去登录</a>
@@ -68,24 +74,182 @@
                 </div>
             </div>
         </div>
-
     </div>
-
 </body>
 </html>
 
 <script src="/Scripts/jquery-3.3.1.min.js"></script>
+<script src="/Scripts/artDialog/dialog.js"></script>
+<script src="/Scripts/common.js"></script>
 <script type="text/javascript">
-    $("#login").on("click", function () {
+    //交互
+    $("#login-username").on("focus", function () {
+            $("#tip_username").html("");
+    }).on("blur", function () {
+        if (trim($(this).val()) == "") {
+            $("#tip_username").html("用户名");
+        }
+        else {
+            CheckUserName();
+        }
+    })
+
+    $("#login-password").on("focus", function () {
+        $("#tip_password").html("");
+        $("#tip_1").hide();
+    }).on("blur", function () {
+        if (trim($(this).val()) == "") {
+            $("#tip_password").html("密码");
+        }
+        else {
+            CheckPsd();
+        }
+    })
+
+    $("#login-password2").on("focus", function () {
+        $("#tip_password2").html("");
+        $("#tip_1").hide();
+    }).on("blur", function () {
+        if (trim($(this).val()) == "") {
+            $("#tip_password2").html("重复密码");
+        }
+        else {
+            CheckPsd2();
+        }
+        })
+
+    $("#logi-checkcode").on("focus", function () {
+        $("#tip_checkcode").html("");
+        $("#tip_1").hide();
+    }).on("blur", function () {
+        if (trim($(this).val()) == "") {
+            $("#tip_checkcode").html("验证码");
+        }
+        else {
+            CheckCheckCode();
+        }
+    })
+
+    //注册
+    var i = 0;
+    var token = '@ViewBag.Token';
+    var refresh = function ()
+    {
+        i += 1;
+        $(".checkcode").attr("src", "ShowCheckCode?token=" + token + "&" + i);
+    }
+
+    //用户名检查
+    var CheckUserName = function () {
+        var username = trim($("#login-username").val());
+        if (username == "") return false;
+        if (!isUserName(username)) {
+            $("#tip_1").html("用户名由5-16位字母/数字/下划线组成！")
+            $("#tip_1").show();
+            return false;
+        }
+        if (IsUserNameExist(username)) {
+            $("#tip_1").html("用户名已存在！")
+            $("#tip_1").show();
+            return false;
+        }
+        return true;
+    }
+
+    var IsUserNameExist = function (username) {
+        var result = false;
+        $.ajax({
+            type: "post",
+            url: "IsUserNameExists",
+            data: "userName=" + username,
+            async: false,
+            success: function (data) {
+                if (data.code == 0) {
+                        result = true;
+                }
+            },
+            error: function (data) {
+
+            }
+        });
+        return result;
+    }
+    //密码检查
+    var CheckPsd = function () {
+        var psd = $(".password").val();
+        if (psd == "") return false;
+        if (!isPassword(psd)) {
+            $("#tip_1").html("密码由6-18位字母/数字/下划线组成！")
+            $("#tip_1").show();
+            return false;
+        }
+        return true;
+    }
+
+    var CheckPsd2 = function () {
+        var cpsd = $("#login-password2").val();
+        var psd = $("#login-password").val();
+        if (cpsd != psd) {
+            $("#tip_1").html("密码和确认密码不一致！")
+            $("#tip_1").show();
+            return false;
+        }
+        return true;
+    }
+
+    //验证码检查
+    var CheckCheckCode = function () {
+        var checkcode = $(".checkcode").val();
+        if (checkcode == "") return false;
+        if (!IsCheckCodeCorrect()) {
+            $("#tip_1").html("验证码不正确！")
+            $("#tip_1").show();
+            return false;
+        }
+        return true;
+    }
+
+    var IsCheckCodeCorrect = function () {
+        var checkcode = $(".checkcode").val();
+
+        var result = false;
+        $.ajax({
+            type: "post",
+            url: "IsCheckCodeCorrect",
+            data: "token=" + token + "&checkCode=" + checkcode,
+            async: false,
+            success: function (data) {
+                if (data.code == true) {
+                    result = true;
+                }
+            },
+            error: function (data) {
+
+            }
+        });
+        return result;
+    }
+
+    //注册
+    $("#regedit").on("click", function () {
         var uname = $("#login-username").val();
         var psd = $("#login-password").val();
-        $.post("RegeditUser",
-            { userName: uname, password: psd },
-            function (data) {
-                if (data.code != "0")
-                {
-                    alert("error");
-                }
-        })
+        var psd2 = $("#login-password2").val();
+
+        if (psd != psd2) {
+            $("#tip_1").show();
+        }
+        else {
+            $.post("RegeditUser",
+                { userName: uname, password: psd },
+                function (data) {
+                    if (data.code != "0") {
+                        dialogAlert(data.message);
+                    }
+                    else {
+                        window.location.href = "/school"
+                    }
+                })
+        }
     })
 </script>

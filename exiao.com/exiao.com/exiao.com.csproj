@@ -145,7 +145,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\ExceptionFilterAttribute.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\LoginFilterAttribute.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SchoolController.cs" />
@@ -472,9 +474,14 @@
     <Content Include="img\project-4.jpg" />
     <Content Include="img\template-mac.png" />
     <Content Include="RedisConfig.xml" />
+    <Content Include="Scripts\artDialog\css\ui-dialog.css" />
+    <Content Include="Scripts\artDialog\dialog-plus-min.js" />
+    <Content Include="Scripts\artDialog\dialog.js" />
+    <Content Include="Scripts\common.js" />
     <Content Include="Scripts\school\front.js" />
     <Content Include="Scripts\school\charts-custom.js" />
     <Content Include="Scripts\school\charts-home.js" />
+    <Content Include="Scripts\viewer-jquery.min.js" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.css" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.min.css" />
     <Content Include="vendor\bootstrap\css\bootstrap-reboot.css" />
@@ -661,6 +668,10 @@
     <ProjectReference Include="..\exiao.model\exiao.model.csproj">
       <Project>{D6CC17D4-85C1-4C61-B288-5FDAF797C248}</Project>
       <Name>exiao.model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\exiao.sdk\exiao.sdk.csproj">
+      <Project>{EAC433E3-671B-499C-9F26-FF9C7A0CF2FA}</Project>
+      <Name>exiao.sdk</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

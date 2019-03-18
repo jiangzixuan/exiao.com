@@ -166,9 +166,9 @@ namespace exiao.sdk
         /// <param name="cc"></param>
         /// <param name="key"></param>
         /// <returns></returns>
-        public static string GetEasyZyRedisKey(CacheCatalog cc, string key)
+        public static string GetRedisKey(CacheCatalog cc, string key)
         {
-            return "C_" + (int)CacheProject.EasyZy + "_" + (int)cc + "_" + key;
+            return "C_" + (int)CacheProject.EXiao + "_" + (int)cc + "_" + key;
         }
 
         //public static T ConvertDicToEntitySingle<T>(Dictionary<string, string> dic) where T : new()
