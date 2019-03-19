@@ -84,7 +84,7 @@ namespace exiao.com.Controllers
             }
             else
             {
-                result.code = AjaxResultCodeEnum.Error;
+                result.code = AjaxResultCodeEnum.Success;
                 result.message = "";
                 result.data = false;
             }

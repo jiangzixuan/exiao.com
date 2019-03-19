@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <root>
   <redis catelog="User" ip="47.94.100.66" port="6379" pwd="260031297" db="0">用户</redis>
-  <redis catelog="Other" ip="47.94.100.66" port="6379" pwd="260031297" db="15">其他</redis>
+  <redis catelog="CheckCode" ip="47.94.100.66" port="6379" pwd="260031297" db="15">其他</redis>
 </root>

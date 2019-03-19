@@ -15,7 +15,7 @@ namespace exiao.dll
         {
             T_User model = null;
             using (MySqlDataReader dr = MySqlHelper.ExecuteReader(Util.GetEXiaoConnectString(),
-                "select Id, UserName, TrueName, Psd, Mobile, CreateDate from T_User where UserName = @UserName",
+                "select Id, UserName, TrueName, Password, Phone, CreateDate from T_User where UserName = @UserName",
                 "@UserName".ToVarCharInPara(userName)))
             {
                 if (dr != null && dr.HasRows)

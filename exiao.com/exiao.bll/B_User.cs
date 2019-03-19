@@ -23,11 +23,11 @@ namespace exiao.bll
             T_User u = D_User.GetUser(userName);
             if (u == null)
             {
-                return true;
+                return false;
             }
             else
             {
-                return false;
+                return true;
             }
         }
     }

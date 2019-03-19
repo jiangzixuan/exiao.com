@@ -58,14 +58,15 @@
                                         <label id="tip_password2" for="login-password2" class="label-material">重复密码</label>
                                     </div>
                                     <div class="form-group">
-                                        <input id="logi-checkcode" type="text" name="loginCheckcode" required class="input-material col-sm-3">
+                                        <input id="login-checkcode" type="text" name="loginCheckcode" required class="input-material col-sm-3">
                                         <label id="tip_checkcode" for="login-checkcode" class="label-material">验证码</label>
                                         <img class="checkcode" src="ShowCheckCode?token=@ViewBag.Token" style="cursor:pointer;" onclick="refresh();" title="点击刷新验证码" alt="点击刷新验证码" />
                                     </div>
-                                    
-                                    <a id="regedit" href="#" class="btn btn-primary">注册</a>
-                                    <label id="tip_1" class="invalid-feedback" style="display:none;">密码与重复密码不一致</label>
-                                    <!-- This should be submit button but I replaced it with <a> for demo purposes-->
+                                    <div class="form-group">
+                                        <a id="regedit" href="#" class="btn btn-primary col-sm-3">注册</a>
+                                        <label id="tip_1" class="invalid-feedback col-sm-8" style="display:none;">密码与重复密码不一致</label>
+                                    </div>
+                                        <!-- This should be submit button but I replaced it with <a> for demo purposes-->
                                 </form>
                                 <small>已有密码? </small><a href="regedit" class="login">去登录</a>
                             </div>
@@ -96,7 +97,6 @@
 
     $("#login-password").on("focus", function () {
         $("#tip_password").html("");
-        $("#tip_1").hide();
     }).on("blur", function () {
         if (trim($(this).val()) == "") {
             $("#tip_password").html("密码");
@@ -108,7 +108,6 @@
 
     $("#login-password2").on("focus", function () {
         $("#tip_password2").html("");
-        $("#tip_1").hide();
     }).on("blur", function () {
         if (trim($(this).val()) == "") {
             $("#tip_password2").html("重复密码");
@@ -118,9 +117,8 @@
         }
         })
 
-    $("#logi-checkcode").on("focus", function () {
+    $("#login-checkcode").on("focus", function () {
         $("#tip_checkcode").html("");
-        $("#tip_1").hide();
     }).on("blur", function () {
         if (trim($(this).val()) == "") {
             $("#tip_checkcode").html("验证码");
@@ -176,7 +174,7 @@
     }
     //密码检查
     var CheckPsd = function () {
-        var psd = $(".password").val();
+        var psd = trim($("#login-password").val());
         if (psd == "") return false;
         if (!isPassword(psd)) {
             $("#tip_1").html("密码由6-18位字母/数字/下划线组成！")
@@ -187,8 +185,8 @@
     }
 
     var CheckPsd2 = function () {
-        var cpsd = $("#login-password2").val();
-        var psd = $("#login-password").val();
+        var cpsd = trim($("#login-password2").val());
+        var psd = trim($("#login-password").val());
         if (cpsd != psd) {
             $("#tip_1").html("密码和确认密码不一致！")
             $("#tip_1").show();
@@ -199,7 +197,7 @@
 
     //验证码检查
     var CheckCheckCode = function () {
-        var checkcode = $(".checkcode").val();
+        var checkcode = trim($("#login-checkcode").val());
         if (checkcode == "") return false;
         if (!IsCheckCodeCorrect()) {
             $("#tip_1").html("验证码不正确！")
@@ -210,7 +208,7 @@
     }
 
     var IsCheckCodeCorrect = function () {
-        var checkcode = $(".checkcode").val();
+        var checkcode = trim($("#login-checkcode").val());
 
         var result = false;
         $.ajax({
@@ -220,7 +218,7 @@
             async: false,
             success: function (data) {
                 if (data.code == true) {
-                    result = true;
+                    result = data.data;
                 }
             },
             error: function (data) {
@@ -232,24 +230,25 @@
 
     //注册
     $("#regedit").on("click", function () {
-        var uname = $("#login-username").val();
-        var psd = $("#login-password").val();
-        var psd2 = $("#login-password2").val();
+        if (!CheckUserName()) return false;
+        if (!CheckPsd()) return false;
+        if (!CheckPsd2()) return false;
+        //if (!CheckCheckCode()) return false;
 
-        if (psd != psd2) {
-            $("#tip_1").show();
-        }
-        else {
-            $.post("RegeditUser",
-                { userName: uname, password: psd },
-                function (data) {
-                    if (data.code != "0") {
-                        dialogAlert(data.message);
-                    }
-                    else {
-                        window.location.href = "/school"
-                    }
-                })
-        }
+        var uname = trim($("#login-username").val());
+        var psd = trim($("#login-password").val());
+        var checkcode = trim($("#login-checkcode").val());
+        
+        $.post("RegeditUser",
+            { userName: uname, password: psd, token: token, checkCode: checkcode },
+            function (data) {
+                if (data.code != "0") {
+                    dialogAlert(data.message);
+                }
+                else {
+                    window.location.href = "/home/login";
+                }
+            })
+        
     })
 </script>
