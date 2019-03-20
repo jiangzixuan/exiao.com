@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="/Content/school/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="/favicon.ico">
-
+    <link href="/Scripts/artDialog/css/ui-dialog.css" rel="stylesheet" />
 </head>
 <body>
     <div class="page login-page">
@@ -47,16 +47,26 @@
                                 <form method="post" class="form-validate">
                                     <div class="form-group">
                                         <input id="login-username" type="text" name="loginUsername" required data-msg="Please enter your username" class="input-material">
-                                        <label for="login-username" class="label-material">用户名</label>
+                                        <label id="tip_username" for="login-username" class="label-material">用户名</label>
                                     </div>
                                     <div class="form-group">
                                         <input id="login-password" type="password" name="loginPassword" required data-msg="Please enter your password" class="input-material">
-                                        <label for="login-password" class="label-material">密码</label>
+                                        <label id="tip_password" for="login-password" class="label-material">密码</label>
                                     </div>
-                                    <a id="login" href="#" class="btn btn-primary">登录</a>
-                                    <!-- This should be submit button but I replaced it with <a> for demo purposes-->
+                                    <div class="form-group">
+                                        <div class="i-checks">
+                                            <input id="AutoLogin" type="checkbox" value="" checked="" class="checkbox-template">
+                                            <label for="AutoLogin">下次自动登录</label>
+                                        </div>
+                                        @*<a href="#" class="forgot-pass">忘记密码?</a>*@
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <a id="login" href="#" class="btn btn-primary col-sm-3">登录</a>
+                                        <label id="tip_1" class="invalid-feedback col-sm-8" style="display:none;"></label>
+                                    </div>
                                 </form>
-                                <a href="#" class="forgot-pass">忘记密码?</a><br><small>没有密码? </small><a href="regedit" class="signup">注册一个</a>
+                                <small>没有账号? </small><a href="regedit" class="signup">注册一个</a>
                             </div>
                         </div>
                     </div>
@@ -69,15 +79,80 @@
 </body>
 </html>
 <script src="/Scripts/jquery-3.3.1.min.js"></script>
+<script src="/Scripts/artDialog/dialog.js"></script>
+<script src="/Scripts/common.js"></script>
 <script type="text/javascript">
-    $("#login").on(click, function () {
-        var uname = $("#login-username").val();
-        var psd = $("#login-password").val();
-        $.post("RegeditUser",
-            { userName: uname, passWord: psd },
-            function () {
+    //交互
+    $("#login-username").on("focus", function () {
+        $("#tip_username").html("");
+    }).on("blur", function () {
+        if (trim($(this).val()) == "") {
+            $("#tip_username").html("用户名");
+        }
+        else {
+            CheckUserName();
+        }
+    })
 
-
+    $("#login-password").on("focus", function () {
+        $("#tip_password").html("");
+    }).on("blur", function () {
+        if (trim($(this).val()) == "") {
+            $("#tip_password").html("密码");
+        }
+        else {
+            CheckPsd();
+        }
         })
+
+    //用户名检查
+    var CheckUserName = function () {
+        var username = trim($("#login-username").val());
+        if (username == "") {
+            $("#tip_1").hide();
+            return false;
+        }
+        if (!isUserName(username)) {
+            $("#tip_1").html("用户名由5-16位字母/数字/下划线组成！")
+            $("#tip_1").show();
+            return false;
+        }
+        $("#tip_1").hide();
+        return true;
+        
+    }
+
+    //密码检查
+    var CheckPsd = function () {
+        var psd = trim($("#login-password").val());
+        if (psd == "") {
+            $("#tip_1").hide();
+            return false;
+        }
+        if (!isPassword(psd)) {
+            $("#tip_1").html("密码由6-18位字母/数字/下划线组成！")
+            $("#tip_1").show();
+            return false;
+        }
+        $("#tip_1").hide();
+        return true;
+    }
+
+    //登录
+    $("#login").on("click", function () {
+        var username = trim($("#login-username").val());
+        var psd = trim($("#login-password").val());
+        var autologin = $("#AutoLogin").prop("checked") ? "1" : "0";
+
+        $.post("LoginUser",
+            { userName: username, password: psd, isAutoLogin: autologin },
+            function (data) {
+                if (data.code != "0") {
+                    dialogAlert("用户名或者密码错误！");
+                }
+                else {
+                    window.location.href = "/school";
+                }
+            })
     })
 </script>

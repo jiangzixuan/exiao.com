@@ -38,5 +38,6 @@ namespace exiao.dll
                 );
             return o == null ? 0 : int.Parse(o.ToString());
         }
+        
     }
 }

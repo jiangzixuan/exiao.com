@@ -101,7 +101,7 @@ namespace exiao.sdk
                     cookie.Expires = expiry;
                 }
                 cookie.Path = "/";
-                cookie.Domain = "easyzy.com";
+                cookie.Domain = "exiao.com";
                 HttpContext.Current.Response.AppendCookie(cookie);
             }
             else
@@ -113,7 +113,7 @@ namespace exiao.sdk
                     cookie.Expires = expiry;
                 }
                 cookie.Path = "/";
-                cookie.Domain = "easyzy.com";
+                cookie.Domain = "exiao.com";
                 HttpContext.Current.Response.AppendCookie(cookie);
             }
         }
@@ -124,7 +124,7 @@ namespace exiao.sdk
             cookie.Values.Add(valueName, "");
             cookie.Expires = DateTime.Now.AddMonths(-1);
             cookie.Path = "/";
-            cookie.Domain = "easyzy.com";
+            cookie.Domain = "exiao.com";
             HttpContext.Current.Response.Cookies.Add(cookie);
 
         }
@@ -134,7 +134,7 @@ namespace exiao.sdk
             HttpCookie Cookie = new HttpCookie(cookieName);
             Cookie.Expires = DateTime.Now.AddDays(-1);
             Cookie.Path = "/";
-            Cookie.Domain = "easyzy.com";
+            Cookie.Domain = "exiao.com";
             HttpContext.Current.Response.Cookies.Add(Cookie);
         }
 

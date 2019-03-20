@@ -1,5 +1,6 @@
 ﻿using exiao.bll;
 using exiao.model.dto;
+using exiao.model.entity;
 using exiao.sdk;
 using System;
 using System.Collections.Generic;
@@ -84,7 +85,7 @@ namespace exiao.com.Controllers
             }
             else
             {
-                result.code = AjaxResultCodeEnum.Success;
+                result.code = AjaxResultCodeEnum.Error;
                 result.message = "";
                 result.data = false;
             }
@@ -116,6 +117,26 @@ namespace exiao.com.Controllers
 
             result.code = AjaxResultCodeEnum.Success;
             result.data = id;
+            return Json(result);
+        }
+
+        public JsonResult LoginUser(string userName, string password, string isAutoLogin)
+        {
+            Dto_AjaxReturnData<int> result = new Dto_AjaxReturnData<int>();
+            T_User u = B_User.Login(userName, password);
+            if (u != null)
+            {
+                B_User.LoginCookie(u, isAutoLogin == "0" ? false : true);
+                result.code = AjaxResultCodeEnum.Success;
+                result.message = "";
+                result.data = u.Id;
+            }
+            else
+            {
+                result.code = AjaxResultCodeEnum.Error;
+                result.message = "";
+                result.data = 0;
+            }
             return Json(result);
         }
 

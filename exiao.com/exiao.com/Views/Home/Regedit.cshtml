@@ -68,7 +68,7 @@
                                     </div>
                                         <!-- This should be submit button but I replaced it with <a> for demo purposes-->
                                 </form>
-                                <small>已有密码? </small><a href="regedit" class="login">去登录</a>
+                                <small>已有账号? </small><a href="regedit" class="login">去登录</a>
                             </div>
                         </div>
                     </div>
@@ -140,7 +140,10 @@
     //用户名检查
     var CheckUserName = function () {
         var username = trim($("#login-username").val());
-        if (username == "") return false;
+        if (username == "") {
+            $("#tip_1").hide();
+            return false;
+        }
         if (!isUserName(username)) {
             $("#tip_1").html("用户名由5-16位字母/数字/下划线组成！")
             $("#tip_1").show();
@@ -151,6 +154,7 @@
             $("#tip_1").show();
             return false;
         }
+        $("#tip_1").hide();
         return true;
     }
 
@@ -175,12 +179,16 @@
     //密码检查
     var CheckPsd = function () {
         var psd = trim($("#login-password").val());
-        if (psd == "") return false;
+        if (psd == "") {
+            $("#tip_1").hide();
+            return false;
+        }
         if (!isPassword(psd)) {
             $("#tip_1").html("密码由6-18位字母/数字/下划线组成！")
             $("#tip_1").show();
             return false;
         }
+        $("#tip_1").hide();
         return true;
     }
 
@@ -192,18 +200,23 @@
             $("#tip_1").show();
             return false;
         }
+        $("#tip_1").hide();
         return true;
     }
 
     //验证码检查
     var CheckCheckCode = function () {
         var checkcode = trim($("#login-checkcode").val());
-        if (checkcode == "") return false;
+        if (checkcode == "") {
+            $("#tip_1").hide();
+            return false;
+        }
         if (!IsCheckCodeCorrect()) {
             $("#tip_1").html("验证码不正确！")
             $("#tip_1").show();
             return false;
         }
+        $("#tip_1").hide();
         return true;
     }
 
