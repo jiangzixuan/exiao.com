@@ -46,11 +46,11 @@
                             <div class="content">
                                 <form method="post" class="form-validate">
                                     <div class="form-group">
-                                        <input id="login-username" type="text" name="loginUsername" required data-msg="Please enter your username" class="input-material">
+                                        <input id="login-username" type="text" name="loginUsername" required class="input-material">
                                         <label id="tip_username" for="login-username" class="label-material">用户名</label>
                                     </div>
                                     <div class="form-group">
-                                        <input id="login-password" type="password" name="loginPassword" required data-msg="Please enter your password" class="input-material">
+                                        <input id="login-password" type="password" name="loginPassword" required class="input-material">
                                         <label id="tip_password" for="login-password" class="label-material">密码</label>
                                     </div>
                                     <div class="form-group">
@@ -82,6 +82,7 @@
 <script src="/Scripts/artDialog/dialog.js"></script>
 <script src="/Scripts/common.js"></script>
 <script type="text/javascript">
+
     //交互
     $("#login-username").on("focus", function () {
         $("#tip_username").html("");

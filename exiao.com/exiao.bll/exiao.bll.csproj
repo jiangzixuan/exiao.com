@@ -46,6 +46,7 @@
     <Compile Include="B_CheckCodeRedis.cs" />
     <Compile Include="B_Agent.cs" />
     <Compile Include="B_User.cs" />
+    <Compile Include="B_UserRedis.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

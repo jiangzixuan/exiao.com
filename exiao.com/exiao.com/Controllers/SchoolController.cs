@@ -6,9 +6,10 @@ using System.Web.Mvc;
 
 namespace exiao.com.Controllers
 {
-    public class SchoolController : Controller
+
+    [LoginFilterAttribute]
+    public class SchoolController : BaseController
     {
-        // GET: School
         public ActionResult Index()
         {
             return View();

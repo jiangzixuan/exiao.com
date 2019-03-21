@@ -19,7 +19,11 @@ namespace exiao.com.Controllers
 
         public ActionResult Login()
         {
-
+            string DesUserModel = Util.GetCookie("exiao.user", "useridentity");
+            if (!string.IsNullOrEmpty(DesUserModel))
+            {
+                Response.Redirect("/school");
+            }
             return View();
         }
 

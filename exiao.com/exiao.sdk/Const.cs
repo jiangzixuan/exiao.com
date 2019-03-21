@@ -24,6 +24,7 @@ namespace exiao.sdk
         /// </summary>
         public enum CacheCatalog
         {
+            User = 0,
             CheckCode=15     //验证码
 
 
