@@ -26,25 +26,40 @@
                         <div class="card-close">
                             <div class="dropdown">
                                 <button type="button" id="closeCard1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                                <div aria-labelledby="closeCard1" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+                                <div aria-labelledby="closeCard1" class="dropdown-menu dropdown-menu-right has-shadow" x-placement="bottom-end" style="display: none; position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(15px, 26px, 0px);">
+                                @*<a href="#" class="dropdown-item remove"><i class="fa fa-times"></i>关闭</a>*@
+                                <a href="#" class="dropdown-item edit"><i class="fa fa-gear"></i>修改</a>
+                                </div>
                             </div>
                         </div>
                         <div class="card-header d-flex align-items-center">
-                            <h3 class="h4">Basic Form</h3>
+                            <h3 class="h4">机构信息</h3>
                         </div>
                         <div class="card-body">
-                            <p>Lorem ipsum dolor sit amet consectetur.</p>
-                            <form>
-                                <div class="form-group">
-                                    <label class="form-control-label">Email</label>
-                                    <input type="email" placeholder="Email Address" class="form-control">
+                            <p>在这里填写您所在机构的基础信息.</p>
+                            <form class="form-horizontal">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">机构名称</label>
+                                    <div class="col-sm-9">
+                                        <input id="inputHorizontalSuccess" placeholder="" class="form-control form-control-success">
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="form-control-label">Password</label>
-                                    <input type="password" placeholder="Password" class="form-control">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">联系电话</label>
+                                    <div class="col-sm-9">
+                                        <input id="inputHorizontalWarning" placeholder="" class="form-control form-control-warning">
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="submit" value="Signin" class="btn btn-primary">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">机构地址</label>
+                                    <div class="col-sm-9">
+                                        <input id="inputHorizontalWarning" placeholder="" class="form-control form-control-warning">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-9 offset-sm-3">
+                                        <input type="submit" value="确定" class="btn btn-primary">
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -55,32 +70,40 @@
                     <div class="card">
                         <div class="card-close">
                             <div class="dropdown">
-                                <button type="button" id="closeCard2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                                <div aria-labelledby="closeCard2" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+                                <button type="button" id="closeCard1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                                <div aria-labelledby="closeCard1" class="dropdown-menu dropdown-menu-right has-shadow" x-placement="bottom-end" style="display: none; position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(15px, 26px, 0px);">
+                                    @*<a href="#" class="dropdown-item remove"><i class="fa fa-times"></i>关闭</a>*@
+                                    <a href="#" class="dropdown-item edit"><i class="fa fa-gear"></i>修改</a>
+                                </div>
                             </div>
                         </div>
                         <div class="card-header d-flex align-items-center">
-                            <h3 class="h4">Horizontal Form</h3>
+                            <h3 class="h4">开设课程</h3>
                         </div>
                         <div class="card-body">
-                            <p>Lorem ipsum dolor sit amet consectetur.</p>
-                            <form class="form-horizontal">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 form-control-label">Email</label>
-                                    <div class="col-sm-9">
-                                        <input id="inputHorizontalSuccess" type="email" placeholder="Email Address" class="form-control form-control-success"><small class="form-text">Example help text that remains unchanged.</small>
+                            <p>在这里填写您开设了哪些培训课程.</p>
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <div class="i-checks">
+                                        <input id="checkboxCustom2" type="checkbox" value="" checked="" class="checkbox-template">
+                                        <label for="checkboxCustom2">语文</label>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-3 form-control-label">Password</label>
-                                    <div class="col-sm-9">
-                                        <input id="inputHorizontalWarning" type="password" placeholder="Pasword" class="form-control form-control-warning"><small class="form-text">Example help text that remains unchanged.</small>
+                                <div class="form-group">
+                                    <div class="i-checks">
+                                        <input id="checkboxCustom2" type="checkbox" value="" checked="" class="checkbox-template">
+                                        <label for="checkboxCustom2">舞蹈</label>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-9 offset-sm-3">
-                                        <input type="submit" value="Signin" class="btn btn-primary">
-                                    </div>
+                            </form>
+                            
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label for="inlineFormInputGroup" class="sr-only"></label>
+                                    <input id="inlineFormInputGroup" type="text" placeholder="" class="mr-3 form-control">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">提交</button>
                                 </div>
                             </form>
                         </div>
