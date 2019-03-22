@@ -29,5 +29,15 @@ namespace exiao.com.Controllers
         {
             return View();
         }
+
+        public ActionResult ClassManage()
+        {
+            return View();
+        }
+
+        public ActionResult RoomManage()
+        {
+            return View();
+        }
     }
 }
