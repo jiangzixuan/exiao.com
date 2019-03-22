@@ -641,6 +641,8 @@
     <Content Include="Views\School\Index.cshtml" />
     <Content Include="Views\School\AgentManage.cshtml" />
     <Content Include="Views\Home\Regedit.cshtml" />
+    <Content Include="Views\School\TeacherManage.cshtml" />
+    <Content Include="Views\School\StudentManage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
