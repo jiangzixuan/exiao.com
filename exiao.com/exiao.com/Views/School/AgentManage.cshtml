@@ -35,40 +35,50 @@
                         <div class="card-header d-flex align-items-center">
                             <h3 class="h4">机构信息</h3>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body agentinfo">
+                            @if (ViewBag.Agents != null && ViewBag.Agents.Count > 0)
+                            {
+                                <p>@ViewBag.Agents[0].Name</p>
+                                <p>@ViewBag.Agents[0].ShortName</p>
+                                <p>@ViewBag.Agents[0].Phone</p>
+                                <p>@ViewBag.Agents[0].Address</p>
+                            }
+                            else
+                            {
                             <p>在这里填写您所在机构的基础信息.</p>
                             <form class="form-horizontal">
                                 <div class="form-group row">
                                     <label class="col-sm-3 form-control-label">机构名称</label>
                                     <div class="col-sm-9">
-                                        <input id="inputHorizontalSuccess" placeholder="" class="form-control form-control-success">
+                                        <input id="agentname" placeholder="" class="form-control form-control-success">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label class="col-sm-3 form-control-label">机构简称</label>
                                     <div class="col-sm-9">
-                                        <input id="inputHorizontalSuccess" placeholder="" class="form-control form-control-success">
+                                        <input id="agentshortname" placeholder="" class="form-control form-control-success">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-3 form-control-label">联系电话</label>
                                     <div class="col-sm-9">
-                                        <input id="inputHorizontalWarning" placeholder="" class="form-control form-control-warning">
+                                        <input id="agentphone" placeholder="" class="form-control form-control-warning">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-3 form-control-label">机构地址</label>
                                     <div class="col-sm-9">
-                                        <input id="inputHorizontalWarning" placeholder="" class="form-control form-control-warning">
+                                        <input id="agentaddress" placeholder="" class="form-control form-control-warning">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-9 offset-sm-3">
-                                        <input type="submit" value="确定" class="btn btn-primary">
+                                        <input type="submit" value="确定" class="btn btn-primary addagent">
                                     </div>
                                 </div>
                             </form>
+                            }
                         </div>
                     </div>
                 </div>
@@ -133,5 +143,30 @@
     </section>
     
 </div>
+<script type="text/javascript">
+    
 
+    //获取开设课程列表
+    $(".addagent").on("click", function () {
+        var name = $("#agentname").val();
+        var shortname = $("#agentshortname").val();
+        var phone = $("#agentphone").val();
+        var address = $("#agentaddress").val();
+
+        $.post("addagent",
+            { name: name, shortname: shortname, phone: phone, address: address },
+            function (data) {
+                if (data.code != "0") {
+                    dialogAlert(data.message);
+                }
+                else {
+                    dialogAlertNoModal("添加成功！")
+                    var html = "<p>" + name + "</p>" + "<p>" + shortname + "</p>" + "<p>" + phone + "</p>" + "<p>" + address + "</p>";
+                    $(".agentinfo").html = html;
+                }
+            })
+    })
+    
+    
+</script>
 

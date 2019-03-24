@@ -1,4 +1,7 @@
-﻿using System;
+﻿using exiao.bll;
+using exiao.model.dto;
+using exiao.model.entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -38,6 +41,23 @@ namespace exiao.com.Controllers
         public ActionResult RoomManage()
         {
             return View();
+        }
+
+        public JsonResult GetAgentCourses(int agentId)
+        {
+            Dto_AjaxReturnData<T_Agent> result = new Dto_AjaxReturnData<T_Agent>();
+            return Json(result);
+        }
+
+        public JsonResult AddAgent(string name, string shortName, string phone, string address)
+        {
+            T_Agent a = B_Agent.AddAgent(name, shortName, phone, address, UserId);
+            Dto_AjaxReturnData<T_Agent> result = new Dto_AjaxReturnData<T_Agent>();
+            result.code = AjaxResultCodeEnum.Success;
+            result.message = "";
+            result.data = a;
+
+            return Json(result);
         }
     }
 }

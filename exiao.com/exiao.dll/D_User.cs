@@ -1,4 +1,5 @@
-﻿using exiao.model.entity;
+﻿using exiao.model.dto;
+using exiao.model.entity;
 using exiao.sdk;
 using MySql.Data.MySqlClient;
 using System;
@@ -39,16 +40,16 @@ namespace exiao.dll
             return o == null ? 0 : int.Parse(o.ToString());
         }
 
-        public static T_User GetUser(int userId)
+        public static Dto_User GetUser(int userId)
         {
-            T_User model = null;
+            Dto_User model = null;
             using (MySqlDataReader dr = MySqlHelper.ExecuteReader(Util.GetEXiaoConnectString(),
                 "select Id, UserName, TrueName, Password, Phone, CreateDate from T_User where Id = @Id",
                 "@Id".ToInt32InPara(userId)))
             {
                 if (dr != null && dr.HasRows)
                 {
-                    model = MySqlDBHelper.ConvertDataReaderToEntitySingle<T_User>(dr);
+                    model = MySqlDBHelper.ConvertDataReaderToEntitySingle<Dto_User>(dr);
                 }
             }
             return model;

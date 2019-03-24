@@ -11,12 +11,12 @@ namespace exiao.dll
 {
     public class D_Agent
     {
-        public List<T_Agent> SearchAgents(int adminId)
+        public static List<T_Agent> GetAgentByAdminId(int adminId)
         {
             List<T_Agent> model = null;
             using (MySqlDataReader dr = MySqlHelper.ExecuteReader(Util.GetEXiaoConnectString(),
-                "select Id, ZyId, ZyType, StudentId, AnswerJson, AnswerImg, Submited, CreateDate from T_Answer where ZyId = @ZyId and Submited = 1",
-                "@ZyId".ToInt32InPara(adminId)))
+                "select Id, Name, ShortName, Address, Phone, AdminId, CreateDate from T_Agent where AdminId = @AdminId",
+                "@AdminId".ToInt32InPara(adminId)))
             {
                 if (dr != null && dr.HasRows)
                 {
@@ -24,6 +24,20 @@ namespace exiao.dll
                 }
             }
             return model;
+        }
+
+        public static int AddAgent(T_Agent a)
+        {
+            object o = MySqlHelper.ExecuteScalar(Util.GetEXiaoConnectString(),
+                "insert into T_Agent(Id, Name, ShortName, Phone, Address, AdminId, CreateDate) values (null, @Name, @ShortName, @Phone, @Address, @AdminId,  @CreateDate); select last_insert_id();",
+                "@Name".ToVarCharInPara(a.Name),
+                "@ShortName".ToVarCharInPara(a.ShortName),
+                "@Phone".ToVarCharInPara(a.Phone),
+                "@Address".ToVarCharInPara(a.Address),
+                "@AdminId".ToInt32InPara(a.AdminId),
+                "@CreateDate".ToDateTimeInPara(a.CreateDate)
+                );
+            return o == null ? 0 : int.Parse(o.ToString());
         }
     }
 }

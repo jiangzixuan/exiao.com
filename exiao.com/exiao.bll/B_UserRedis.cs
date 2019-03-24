@@ -1,4 +1,5 @@
 ﻿using exiao.dll;
+using exiao.model.dto;
 using exiao.model.entity;
 using exiao.sdk;
 using System;
@@ -20,22 +21,23 @@ namespace exiao.bll
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
-        public static T_User GetUser(int userId)
+        public static Dto_User GetUser(int userId)
         {
-            T_User u = null;
+            Dto_User u = null;
             string key = RedisHelper.GetRedisKey(Const.CacheCatalog.User, userId.ToString());
             using (var client = RedisHelper.Instance.GetRedisClient(Const.CacheCatalog.User.ToString()))
             {
                 if (client != null)
                 {
-                    u = client.Get<T_User>(key);
+                    u = client.Get<Dto_User>(key);
                     if (u == null)
                     {
                         u = D_User.GetUser(userId);
-                        if (u != null)
-                        {
-                            client.Set(key, u, ts);
-                        }
+                    }
+                    if (u != null && u.Agents == null)
+                    {
+                        u.Agents = D_Agent.GetAgentByAdminId(u.Id);
+                        client.Set(key, u, ts);
                     }
                 }
             }

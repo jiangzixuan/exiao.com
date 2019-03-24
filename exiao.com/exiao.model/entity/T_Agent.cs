@@ -12,6 +12,8 @@ namespace exiao.model.entity
 
         public string Name { get; set; }
 
+        public string ShortName { get; set; }
+
         public string Address { get; set; }
 
         public string Phone { get; set; }
