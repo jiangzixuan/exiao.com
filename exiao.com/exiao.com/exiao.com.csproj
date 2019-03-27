@@ -17,7 +17,8 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress />
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -479,6 +480,8 @@
     <Content Include="Scripts\artDialog\dialog-plus-min.js" />
     <Content Include="Scripts\artDialog\dialog.js" />
     <Content Include="Scripts\common.js" />
+    <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Scripts\jquery.pager.js" />
     <Content Include="Scripts\school\front.js" />
     <Content Include="Scripts\school\charts-custom.js" />
     <Content Include="Scripts\school\charts-home.js" />

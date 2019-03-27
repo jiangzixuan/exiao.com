@@ -10,7 +10,7 @@ using System.Web.Mvc;
 namespace exiao.com.Controllers
 {
 
-    [LoginFilterAttribute]
+    //[LoginFilterAttribute]
     public class SchoolController : BaseController
     {
         public ActionResult Index()
@@ -51,6 +51,7 @@ namespace exiao.com.Controllers
 
         public JsonResult AddAgent(string name, string shortName, string phone, string address)
         {
+            int UserId = 2;
             T_Agent a = B_Agent.AddAgent(name, shortName, phone, address, UserId);
             Dto_AjaxReturnData<T_Agent> result = new Dto_AjaxReturnData<T_Agent>();
             result.code = AjaxResultCodeEnum.Success;
