@@ -1,4 +1,5 @@
 ﻿using exiao.bll;
+using exiao.model.dto;
 using exiao.model.entity;
 using exiao.sdk;
 using System;
@@ -12,7 +13,7 @@ namespace exiao.com.Controllers
     public class BaseController : Controller
     {
         protected int UserId = 0;
-        protected T_User UserInfo = null;
+        protected Dto_User UserInfo = null;
 
         public BaseController()
         {
@@ -25,7 +26,8 @@ namespace exiao.com.Controllers
             {
                 UserInfo = B_UserRedis.GetUser(UserId);
             }
-            ViewBag.UserInfo = UserInfo;
+            //ViewBag.UserInfo = UserInfo;
+            ViewBag.Agents = UserInfo.Agents;
         }
 
         public void Logout()

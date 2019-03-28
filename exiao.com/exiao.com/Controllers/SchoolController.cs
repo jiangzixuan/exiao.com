@@ -15,11 +15,17 @@ namespace exiao.com.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.CurrentFunc = 1;
             return View();
         }
 
-        public ActionResult AgentManage()
+        public ActionResult AgentManage(int agentId)
         {
+            ViewBag.CurrentFunc = 7;
+            if (agentId != 0)
+            {
+                ViewBag.Agent = UserInfo.Agents.FirstOrDefault(a => a.Id == agentId);
+            }
             return View();
         }
 
@@ -51,7 +57,7 @@ namespace exiao.com.Controllers
 
         public JsonResult AddAgent(string name, string shortName, string phone, string address)
         {
-            int UserId = 2;
+            //int UserId = 2;
             T_Agent a = B_Agent.AddAgent(name, shortName, phone, address, UserId);
             Dto_AjaxReturnData<T_Agent> result = new Dto_AjaxReturnData<T_Agent>();
             result.code = AjaxResultCodeEnum.Success;

@@ -36,12 +36,12 @@
                             <h3 class="h4">机构信息</h3>
                         </div>
                         <div class="card-body agentinfo">
-                            @if (ViewBag.Agents != null && ViewBag.Agents.Count > 0)
+                            @if (ViewBag.Agent != null)
                             {
-                                <p>@ViewBag.Agents[0].Name</p>
-                                <p>@ViewBag.Agents[0].ShortName</p>
-                                <p>@ViewBag.Agents[0].Phone</p>
-                                <p>@ViewBag.Agents[0].Address</p>
+                                <p>机构名称：@ViewBag.Agent.Name</p>
+                                <p>机构简称：@ViewBag.Agent.ShortName</p>
+                                <p>联系电话：@ViewBag.Agent.Phone</p>
+                                <p>机构地址：@ViewBag.Agent.Address</p>
                             }
                             else
                             {
@@ -159,7 +159,8 @@
                 }
                 else {
                     dialogAlertNoModal("添加成功！")
-                    var html = "<p>" + name + "</p>" + "<p>" + shortname + "</p>" + "<p>" + phone + "</p>" + "<p>" + address + "</p>";
+
+                    var html = "<p>机构名称：" + name + "</p>" + "<p>机构简称：" + shortname + "</p>" + "<p>联系电话：" + phone + "</p>" + "<p>机构地址：" + address + "</p>";
                     $(".agentinfo").html(html);
                 }
             })
